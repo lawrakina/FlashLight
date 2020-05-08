@@ -7,7 +7,7 @@ namespace FpsUnity.View
     {
         #region Fields
 
-        private FlashLightUiText _flashLightUiText;
+        private FlashLightUi _flashLightUi;
         private FlashLightUiBar _flashLightUiBar;
         private WeaponUiText _weaponUiText;
         private SelectionObjMessageUi _selectionObjMessageUi;
@@ -17,13 +17,13 @@ namespace FpsUnity.View
 
         #region Properties
 
-        public FlashLightUiText LightUiText
+        public FlashLightUi LightUi
         {
             get
             {
-                if (!_flashLightUiText)
-                    _flashLightUiText = Object.FindObjectOfType<FlashLightUiText>();
-                return _flashLightUiText;
+                if (!_flashLightUi)
+                    _flashLightUi = Object.FindObjectOfType<FlashLightUi>();
+                return _flashLightUi;
             }
         }
 
