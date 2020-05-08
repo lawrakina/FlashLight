@@ -24,11 +24,12 @@ namespace FpsUnity.Model
 
         #endregion
 
+
         #region Properties
 
         public float BatteryChargeCurrent { get; private set; }
 
-        public Color BatteryGetColor
+        public Color GetColorBattery
         {
             get
             {

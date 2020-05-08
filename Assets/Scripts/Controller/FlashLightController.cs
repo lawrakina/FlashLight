@@ -30,7 +30,7 @@ namespace FpsUnity.Controller
         public void Execute()
         {
             _flashLightUi.Text = _flashLightModel.BatteryChargeCurrent;
-            _flashLightUi.Color = _flashLightModel.BatteryGetColor;
+            _flashLightUi.Color = _flashLightModel.GetColorBattery;
 
             if (!IsActive)
             {

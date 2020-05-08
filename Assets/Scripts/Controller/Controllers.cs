@@ -47,7 +47,6 @@ namespace FpsUnity.Controller
 
         public Controllers()
         {
-            IMotor motor = default;
             //if (Application.platform == RuntimePlatform.PS4)
             //{
 
@@ -55,8 +54,12 @@ namespace FpsUnity.Controller
             //}
             //else
             //{
-            motor = new UnitMotor(ServiceLocatorMonoBehavior.GetService<CharacterController>());
+
             //}
+
+            
+            IMotor motor = default;
+            motor = new UnitMotor(ServiceLocatorMonoBehavior.GetService<CharacterController>());
             ServiceLocator.SetService(new PlayerController(motor));
             ServiceLocator.SetService(new FlashLightController());
             ServiceLocator.SetService(new InputController());

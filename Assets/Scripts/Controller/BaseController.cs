@@ -1,4 +1,6 @@
 ﻿using FpsUnity.Model;
+using FpsUnity.View;
+
 
 namespace FpsUnity.Controller
 {
@@ -6,12 +8,19 @@ namespace FpsUnity.Controller
     {
         #region Properties
 
+        protected UiInterface UiInterface { get; set; }
+
         public bool IsActive { get; private set; }
 
         #endregion
 
 
         #region Methods
+
+        protected BaseController()
+        {
+            UiInterface = new UiInterface();
+        }
 
         public virtual void On()
         {
