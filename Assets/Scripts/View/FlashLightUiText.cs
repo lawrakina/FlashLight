@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace FpsUnity.View
 {
-    public sealed class FlashLightUi : MonoBehaviour
+    public sealed class FlashLightUiText : MonoBehaviour
     {
 
         #region Properties
@@ -21,7 +21,7 @@ namespace FpsUnity.View
 
         public void SetActive(bool value)
         {
-            //print($"FlashLightUi.SetActive({value})");
+            //print($"FlashLightUiText.SetActive({value})");
             _text.gameObject.SetActive(value);
         }
 
@@ -40,7 +40,7 @@ namespace FpsUnity.View
         private void Awake()
         {
             _text = GetComponent<Text>();
-            //print($"FlashLightUi.Awake()");
+            //print($"FlashLightUiText.Awake()");
         }
 
         #endregion

@@ -11,7 +11,7 @@ namespace FpsUnity.Controller
         #region Fields
 
         private FlashLightModel _flashLightModel;
-        private FlashLightUi _flashLightUi;
+        private FlashLightUiText _flashLightUiText;
 
         #endregion
 
@@ -21,16 +21,16 @@ namespace FpsUnity.Controller
         public void Initialization()
         {
             _flashLightModel = Object.FindObjectOfType<FlashLightModel>();
-            _flashLightUi = Object.FindObjectOfType<FlashLightUi>();
+            _flashLightUiText = Object.FindObjectOfType<FlashLightUiText>();
 
-            //Debug.Log($"_flashLightModel: {_flashLightModel}, _flashLightUi: {_flashLightUi}");
+            //Debug.Log($"_flashLightModel: {_flashLightModel}, _flashLightUiText: {_flashLightUiText}");
 
         }
 
         public void Execute()
         {
-            _flashLightUi.Text = _flashLightModel.BatteryChargeCurrent;
-            _flashLightUi.Color = _flashLightModel.GetColorBattery;
+            _flashLightUiText.Text = _flashLightModel.BatteryChargeCurrent;
+            _flashLightUiText.Color = _flashLightModel.GetColorBattery;
 
             if (!IsActive)
             {
@@ -59,7 +59,7 @@ namespace FpsUnity.Controller
             if (_flashLightModel.BatteryChargeCurrent <= 0) return;
             base.On();
             _flashLightModel.Switch(FlashLightActiveType.On);
-            //_flashLightUi.SetActive(true);
+            //_flashLightUiText.SetActive(true);
         }
 
         public override void Off()
@@ -67,7 +67,7 @@ namespace FpsUnity.Controller
             if (!IsActive) return;
             base.Off();
             _flashLightModel.Switch(FlashLightActiveType.Off);
-            //_flashLightUi.SetActive(false);
+            //_flashLightUiText.SetActive(false);
         }
 
         #endregion
