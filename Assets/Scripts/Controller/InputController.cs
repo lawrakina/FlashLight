@@ -1,6 +1,5 @@
 ﻿using FpsUnity.Enums;
 using FpsUnity.Interface;
-using FpsUnity.Model;
 using FpsUnity.Services;
 using UnityEngine;
 
@@ -31,7 +30,6 @@ namespace FpsUnity.Controller
         {
             ServiceLocator.Resolve<WeaponController>().Off();
             var tempWeapon = ServiceLocator.Resolve<Inventory>().GetWeaponByIndex(i);
-            //var tempWeapon = ServiceLocator.Resolve<Inventory>().Weapons[i];//todo инкапсулировать
             if (tempWeapon != null)
             {
                 ServiceLocator.Resolve<WeaponController>().On(tempWeapon);
@@ -49,8 +47,8 @@ namespace FpsUnity.Controller
             if (!IsActive) return;
             if (Input.GetKeyDown(_activeFlashLight))
             {
-                ServiceLocator.Resolve<FlashLightController>().
-                    Switch(ServiceLocator.Resolve<Inventory>().FlashLight);
+                ServiceLocator.Resolve<FlashLightController>().Switch(); //todo сделать вариант смены фонарика
+                //Switch(ServiceLocator.Resolve<Inventory>().FlashLight);
             }
 
             //todo реализовать выбор оружия по колесу мыши
