@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public static class CustomDebug
+public static class Dbg
 {
-    public static bool IsDebug;
+    public static bool IsDebug = true;
     public static void Log(object value)
     {
         if (IsDebug)

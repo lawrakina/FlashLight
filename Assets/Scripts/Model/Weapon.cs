@@ -11,9 +11,9 @@ namespace FpsUnity.Model
     {
         #region Fields
 
-        private int _maxCountAmmunition = 40;
-        private int _minCountAmmunition = 20;
-        private int _countClip = 5;
+        [SerializeField] private int _maxCountAmmunition = 40;
+        [SerializeField] private int _minCountAmmunition = 20;
+        [SerializeField] private int _countClip = 5;
         public Ammunition Ammunition;
         public Clip Clip;
 
@@ -58,20 +58,20 @@ namespace FpsUnity.Model
 
         #region Methods
 
-        protected void ReloadClip()
+        public void ReloadClip()
         {
             if (CountClip <= 0) return;
             Clip = _clips.Dequeue();
         }
 
-        protected void AddClip(Clip clip)
+        public void AddClip(Clip clip)
         {
             _clips.Enqueue(clip);
         }
 
         public abstract void Fire();
 
-        protected void ReadyShoot()
+        public void ReadyShoot()
         {
             _isReady = true;
         }

@@ -17,6 +17,8 @@ namespace FpsUnity.View
         private void Awake()
         {
             _text = GetComponent<Text>();
+
+            _text.text = "";
         }
 
         #endregion

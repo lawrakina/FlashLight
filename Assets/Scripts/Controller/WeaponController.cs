@@ -12,28 +12,18 @@ namespace FpsUnity.Controller
         #endregion
 
 
-        #region Properties
-
-
-
-        #endregion
-
-
-        #region UnityMethods
-
-
-
-        #endregion
-
-
         #region Methods
 
         public override void On(params BaseObjectScene[] weapon)
         {
             if (IsActive) return;
-            if (weapon.Length > 0) _weapon = weapon[0] as Weapon;
-            if (_weapon == null) return;
-            base.On();
+            if (weapon.Length > 0)
+            {
+                _weapon = weapon[0] as Weapon;
+            }
+            base.On(_weapon);
+            if (_weapon == null) 
+                return;
             _weapon.IsVisible = true;
             UiInterface.WeaponUiText.SetActive(true);
             UiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
@@ -58,7 +48,8 @@ namespace FpsUnity.Controller
 
         public void ReloadClip()
         {
-            throw new System.NotImplementedException();
+            _weapon.ReloadClip();
+            UiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
         }
     }
 }

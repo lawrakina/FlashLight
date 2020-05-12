@@ -20,6 +20,8 @@ public class AimUiText : MonoBehaviour
     {
         _aims = FindObjectsOfType<Aim>();
         _text = GetComponent<Text>();
+
+        _text.text = "";
     }
 
     private void OnEnable()

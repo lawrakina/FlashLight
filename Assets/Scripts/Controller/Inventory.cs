@@ -34,6 +34,7 @@ namespace FpsUnity.Controller
 
             foreach (var weapon in Weapons)
             {
+                Debug.Log($"weapon:{weapon}, weapon.name:{weapon.name}");
                 weapon.IsVisible = false;
             }
 
@@ -54,7 +55,10 @@ namespace FpsUnity.Controller
 
         public Weapon GetWeaponByIndex(int index)
         {
-            return index < _weapons.Length ? _weapons[index] : null;
+            Debug.Log($"GetWeaponByIndex {index}, _weapons:{_weapons[index]}, {_weapons[index].name}");
+            //return _weapons[index];
+
+            return index <= _weapons.Length ? _weapons[index] : null;
         }
 
         public Weapon GetWeaponByType(WeaponType type)

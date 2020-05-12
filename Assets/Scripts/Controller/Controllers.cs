@@ -35,9 +35,13 @@ namespace FpsUnity.Controller
                 }
             }
 
+
+            ServiceLocator.Resolve<Inventory>().Initialization();
             ServiceLocator.Resolve<PlayerController>().On();
-            ServiceLocator.Resolve<FlashLightController>().On();
             ServiceLocator.Resolve<InputController>().On();
+            ServiceLocator.Resolve<SelectionController>().On();
+            ServiceLocator.Resolve<WeaponController>().On(); 
+            //ServiceLocator.Resolve<FlashLightController>().On();
         }
 
         #endregion
@@ -57,19 +61,29 @@ namespace FpsUnity.Controller
 
             //}
 
-            
+
             IMotor motor = default;
             motor = new UnitMotor(ServiceLocatorMonoBehavior.GetService<CharacterController>());
             ServiceLocator.SetService(new PlayerController(motor));
+            ServiceLocator.SetService(new Inventory());
+            ServiceLocator.SetService(new TimeRemainingController());
             ServiceLocator.SetService(new FlashLightController());
             ServiceLocator.SetService(new InputController());
-            _executeControllers = new IExecute[3];
+            ServiceLocator.SetService(new SelectionController());
+            ServiceLocator.SetService(new WeaponController());
 
-            _executeControllers[0] = ServiceLocator.Resolve<PlayerController>();
+            _executeControllers = new IExecute[5];
 
-            _executeControllers[1] = ServiceLocator.Resolve<FlashLightController>();
+            _executeControllers[0] = ServiceLocator.Resolve<TimeRemainingController>();
 
-            _executeControllers[2] = ServiceLocator.Resolve<InputController>();
+            _executeControllers[1] = ServiceLocator.Resolve<PlayerController>();
+
+            _executeControllers[2] = ServiceLocator.Resolve<FlashLightController>();
+
+            _executeControllers[3] = ServiceLocator.Resolve<InputController>();
+
+            _executeControllers[4] = ServiceLocator.Resolve<SelectionController>();
+
         }
 
         #endregion

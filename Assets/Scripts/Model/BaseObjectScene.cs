@@ -43,7 +43,9 @@ namespace FpsUnity.Model
             set
             {
                 _isVisible = value;
+                //Debug.Log($"IsVisible: {value}, transform: {transform}");
                 RendererSetActive(transform);
+                //Debug.Log($"IsVisible: {value}, transform.childCount: {transform.childCount}");
                 if (transform.childCount <= 0) return;
                 foreach (Transform transform1 in transform)
                 {

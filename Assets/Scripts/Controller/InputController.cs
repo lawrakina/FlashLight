@@ -32,6 +32,7 @@ namespace FpsUnity.Controller
             var tempWeapon = ServiceLocator.Resolve<Inventory>().GetWeaponByIndex(i);
             if (tempWeapon != null)
             {
+                Debug.Log($"tempWeapon: {tempWeapon}, name: {tempWeapon.name}");
                 ServiceLocator.Resolve<WeaponController>().On(tempWeapon);
             }
         }

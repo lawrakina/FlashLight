@@ -5,6 +5,11 @@ namespace FpsUnity.Model
 {
     public sealed class Gun : Weapon
     {
+        private Gun()
+        {
+            WeaponType = Enums.WeaponType.Ak47;
+        }
+
         #region Methods
 
         public override void Fire()
