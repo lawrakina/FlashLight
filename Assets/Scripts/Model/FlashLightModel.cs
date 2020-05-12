@@ -10,17 +10,21 @@ namespace FpsUnity.Model
 
         [SerializeField] private float _speedRotation = 11f;
         [SerializeField] private float _batteryChargeMax = 10f;
-        [SerializeField] private float _persentLowBatteryCharge = 20f;
-        [SerializeField] private float _persentFullBatteryCharge = 80f;
+        [SerializeField] private float _percentLowBatteryCharge = 20f;
+        [SerializeField] private float _percentFullBatteryCharge = 80f;
 
         private Light _light;
         private Transform _goFollow;
         private Vector3 _vectorOffset;
-        private readonly Color _lowChargeColor = Color.red;
-        private readonly Color _fullChargeColor = Color.green;
-        private readonly Color _mediumChargeColor = Color.white;
+        private readonly Color _fullChargeBatteryColor = Color.green;
+        private readonly Color _lowChargeBatteryColor = Color.yellow;
+        private readonly Color _mediumChargeBatteryColor = Color.black;
         private readonly Color _chargingBatteryColor = Color.blue;
         private Color _currentBatteryColor;
+
+        private readonly Color _lowChargeBarColor = Color.red;
+        private readonly Color _normalChargeBarColor = Color.white;
+        private Color _currentBarColor;
 
         #endregion
 
@@ -28,6 +32,8 @@ namespace FpsUnity.Model
         #region Properties
 
         public float BatteryChargeCurrent { get; private set; }
+
+        public float BatteryPercentChargeCurrent => BatteryChargeCurrent / _batteryChargeMax;
 
         public Color GetColorBattery
         {
@@ -38,19 +44,31 @@ namespace FpsUnity.Model
                     _currentBatteryColor = _chargingBatteryColor;
                 }
                 else
-                if (BatteryChargeCurrent >= (_persentFullBatteryCharge * 0.01 * _batteryChargeMax))
+                if (BatteryChargeCurrent >= (_percentFullBatteryCharge * 0.01 * _batteryChargeMax))
                 {
-                    _currentBatteryColor = _fullChargeColor;
+                    _currentBatteryColor = _fullChargeBatteryColor;
                 }
-                else if (BatteryChargeCurrent <= (_persentLowBatteryCharge * 0.01 * _batteryChargeMax))
+                else if (BatteryChargeCurrent <= (_percentLowBatteryCharge * 0.01 * _batteryChargeMax))
                 {
-                    _currentBatteryColor = _lowChargeColor;
+                    _currentBatteryColor = _lowChargeBatteryColor;
                 }
                 else
                 {
-                    _currentBatteryColor = _mediumChargeColor;
+                    _currentBatteryColor = _mediumChargeBatteryColor;
                 }
                 return _currentBatteryColor;
+            }
+        }
+
+        public Color GetColorBar
+        {
+            get
+            {
+                if (BatteryChargeCurrent >= (_percentLowBatteryCharge * 0.01 * _batteryChargeMax))
+                    _currentBarColor = _normalChargeBarColor;
+                else
+                    _currentBarColor = _lowChargeBarColor;
+                return _currentBarColor;
             }
         }
 
@@ -75,7 +93,6 @@ namespace FpsUnity.Model
 
         public void Switch(FlashLightActiveType value)
         {
-            //Debug.Log($"FlashLightModel.Switch({value})");
             switch (value)
             {
                 case FlashLightActiveType.On:
@@ -115,7 +132,6 @@ namespace FpsUnity.Model
         {
             if (BatteryChargeCurrent < _batteryChargeMax)
             {
-                //Debug.Log($"ChargeBattery.BatteryChargeCurrent: {BatteryChargeCurrent}");
                 BatteryChargeCurrent += Time.deltaTime;
             }
         }

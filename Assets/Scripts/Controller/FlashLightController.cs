@@ -12,6 +12,7 @@ namespace FpsUnity.Controller
 
         private FlashLightModel _flashLightModel;
         private FlashLightUiText _flashLightUiText;
+        private FlashLightUiBar _flashLightUiBar;
 
         #endregion
 
@@ -22,15 +23,15 @@ namespace FpsUnity.Controller
         {
             _flashLightModel = Object.FindObjectOfType<FlashLightModel>();
             _flashLightUiText = Object.FindObjectOfType<FlashLightUiText>();
-
-            //Debug.Log($"_flashLightModel: {_flashLightModel}, _flashLightUiText: {_flashLightUiText}");
-
+            _flashLightUiBar = Object.FindObjectOfType<FlashLightUiBar>();
         }
 
         public void Execute()
         {
             _flashLightUiText.Text = _flashLightModel.BatteryChargeCurrent;
             _flashLightUiText.Color = _flashLightModel.GetColorBattery;
+            _flashLightUiBar.Fill = _flashLightModel.BatteryPercentChargeCurrent;
+            _flashLightUiBar.SetColor(_flashLightModel.GetColorBar);
 
             if (!IsActive)
             {
