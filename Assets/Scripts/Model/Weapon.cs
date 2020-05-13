@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using FpsUnity.Controller;
 using FpsUnity.Enums;
+using FpsUnity.Helper;
 using FpsUnity.Interface;
 using UnityEngine;
 
@@ -11,8 +12,7 @@ namespace FpsUnity.Model
     {
         #region Fields
 
-        [SerializeField] private int _maxCountAmmunition = 40;
-        [SerializeField] private int _minCountAmmunition = 20;
+        [SerializeField] private int _countAmmunition = 30;
         [SerializeField] private int _countClip = 5;
         public Ammunition Ammunition;
         public Clip Clip;
@@ -47,7 +47,7 @@ namespace FpsUnity.Model
             _timeRemaining = new TimeRemaining(ReadyShoot, _rechergeTime);
             for (var i = 0; i <= _countClip; i++)
             {
-                AddClip(new Clip { CountAmmunition = Random.Range(_minCountAmmunition, _maxCountAmmunition) });
+                AddClip(new Clip { CountAmmunition = _countAmmunition });
             }
 
             ReloadClip();

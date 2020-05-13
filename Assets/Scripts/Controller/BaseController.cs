@@ -37,11 +37,11 @@ namespace FpsUnity.Controller
             IsActive = false;
         }
 
-        public void Switch()
+        public void Switch(params BaseObjectScene[] obj)
         {
             if (!IsActive)
             {
-                On();
+                On(obj);
             }
             else
             {

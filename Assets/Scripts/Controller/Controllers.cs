@@ -1,7 +1,8 @@
-﻿using FpsUnity.Interface;
+﻿using FpsUnity.Helper;
+using FpsUnity.Interface;
 using UnityEngine;
 using FpsUnity.Services;
-
+using FpsUnity.Model;
 
 namespace FpsUnity.Controller
 {
@@ -35,13 +36,13 @@ namespace FpsUnity.Controller
                 }
             }
 
-
             ServiceLocator.Resolve<Inventory>().Initialization();
             ServiceLocator.Resolve<PlayerController>().On();
             ServiceLocator.Resolve<InputController>().On();
             ServiceLocator.Resolve<SelectionController>().On();
-            ServiceLocator.Resolve<WeaponController>().On(); 
-            //ServiceLocator.Resolve<FlashLightController>().On();
+            ServiceLocator.Resolve<WeaponController>().On();
+
+
         }
 
         #endregion
@@ -83,7 +84,6 @@ namespace FpsUnity.Controller
             _executeControllers[3] = ServiceLocator.Resolve<InputController>();
 
             _executeControllers[4] = ServiceLocator.Resolve<SelectionController>();
-
         }
 
         #endregion

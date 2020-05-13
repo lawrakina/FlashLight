@@ -54,7 +54,7 @@ namespace FpsUnity.Model
 
         public string GetMessage()
         {
-            return  $"Name: {gameObject.name}, Hp: {Hp}";
+            return  $"{gameObject.name}, Hp: {Hp}";
         }
 
         #endregion

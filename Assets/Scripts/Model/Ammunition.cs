@@ -1,5 +1,6 @@
 ﻿using FpsUnity.Controller;
 using FpsUnity.Enums;
+using FpsUnity.Helper;
 using FpsUnity.Interface;
 using UnityEngine;
 
@@ -10,11 +11,12 @@ namespace FpsUnity.Model
     {
         #region Fields
 
-        [SerializeField] private float _timeToDestruct = 10;
+        [SerializeField] private float _timeToDestruct = 4;
         [SerializeField] private float _baseDamage = 10;
         protected float _curDamage; //todo доделать свой урон
         private float _lossOfDamageAtTime = 0.2f;
         private ITimeRemaining _timeRemaining;
+        private ITimeRemaining _timePutToPool;
 
         #endregion
 
@@ -36,9 +38,12 @@ namespace FpsUnity.Model
 
         private void Start()
         {
-            Destroy(gameObject, _timeToDestruct);
+            //Destroy(gameObject, _timeToDestruct);
             _timeRemaining = new TimeRemaining(LossOfDamage, 1.0f, true);
             _timeRemaining.AddTimeRemaining();
+
+            _timePutToPool = new TimeRemaining(DestroyAmmunition, _timeToDestruct);
+            _timePutToPool.AddTimeRemaining();
         }
 
         #endregion
@@ -59,9 +64,10 @@ namespace FpsUnity.Model
 
         protected void DestroyAmmunition()
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             _timeRemaining.RemoveTimeRemaining();
-            //todo вернуть в пул
+            _timePutToPool.RemoveTimeRemaining();
+            PoolManager.PutToPool(this);
         }
 
         #endregion

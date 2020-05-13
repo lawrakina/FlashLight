@@ -1,5 +1,6 @@
-﻿using FpsUnity.Model;
-
+﻿using System;
+using FpsUnity.Model;
+using UnityEngine;
 
 namespace FpsUnity.Controller
 {
@@ -17,16 +18,24 @@ namespace FpsUnity.Controller
         public override void On(params BaseObjectScene[] weapon)
         {
             if (IsActive) return;
-            if (weapon.Length > 0)
+            Debug.Log($"WeaponController.On, weapon: {weapon}");
+            try
             {
-                _weapon = weapon[0] as Weapon;
+                if (weapon.Length > 0)
+                {
+                    _weapon = weapon[0] as Weapon;
+                }
+                base.On(_weapon);
+                if (_weapon == null)
+                    return;
+                _weapon.IsVisible = true;
+                UiInterface.WeaponUiText.SetActive(true);
+                UiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
             }
-            base.On(_weapon);
-            if (_weapon == null) 
-                return;
-            _weapon.IsVisible = true;
-            UiInterface.WeaponUiText.SetActive(true);
-            UiInterface.WeaponUiText.ShowData(_weapon.Clip.CountAmmunition, _weapon.CountClip);
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Warning! WeaponController.On weapon == null");
+            }
         }
 
         public override void Off()

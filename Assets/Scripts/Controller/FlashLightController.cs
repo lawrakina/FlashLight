@@ -54,11 +54,13 @@ namespace FpsUnity.Controller
 
         #region Methods
 
-        public override void On()
+        public override void On(params BaseObjectScene[] flashLight)
         {
             if (IsActive) return;
+            if (flashLight.Length > 0) _flashLightModel = flashLight[0] as FlashLightModel;
+            if (_flashLightModel == null) return;
             if (_flashLightModel.BatteryChargeCurrent <= 0) return;
-            base.On();
+            base.On(_flashLightModel);
             _flashLightModel.Switch(FlashLightActiveType.On);
             //_flashLightUiText.SetActive(true);
         }

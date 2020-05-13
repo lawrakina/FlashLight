@@ -79,6 +79,20 @@ namespace FpsUnity.Model
 
         #region Methods
 
+        public void SetActivateChildren(GameObject target, bool state)
+        {
+            target.SetActive(state);
+
+            if (target.transform.childCount <= 0) return;
+
+            if (!target.activeInHierarchy) return;
+
+            foreach (GameObject child in target.transform)
+            {
+                SetActivateChildren(child, state);
+            }
+        }
+
         private void AskLayer(Transform obj, int layer)
         {
             obj.gameObject.layer = layer;
@@ -158,5 +172,13 @@ namespace FpsUnity.Model
         }
 
         #endregion
+
+        public void SetDefault()
+        {
+            //todo сбросить все поля в дефолтное значение
+            Transform.position = Vector3.zero;
+            Transform.rotation = Quaternion.identity;
+            Rigidbody.velocity = Vector3.zero;
+        }
     }
 }

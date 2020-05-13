@@ -13,7 +13,8 @@ namespace FpsUnity.Controller
         private KeyCode _activeFlashLight = KeyCode.F;
         private KeyCode _cansel = KeyCode.Escape;
         private KeyCode _reloadClip = KeyCode.R;
-        private KeyCode _selectWeapon1 = KeyCode.Alpha1;   
+        private KeyCode _selectWeapon1 = KeyCode.Alpha1;
+        private KeyCode _selectWeapon2 = KeyCode.Alpha2;
         private int _mouseButton = (int) MouseButton.LeftButton;
 
         #endregion
@@ -32,7 +33,7 @@ namespace FpsUnity.Controller
             var tempWeapon = ServiceLocator.Resolve<Inventory>().GetWeaponByIndex(i);
             if (tempWeapon != null)
             {
-                Debug.Log($"tempWeapon: {tempWeapon}, name: {tempWeapon.name}");
+                //Debug.Log($"tempWeapon: {tempWeapon}, name: {tempWeapon.name}");
                 ServiceLocator.Resolve<WeaponController>().On(tempWeapon);
             }
         }
@@ -57,6 +58,11 @@ namespace FpsUnity.Controller
             if (Input.GetKeyDown(_selectWeapon1))
             {
                 SelectWeapon(0);
+            }
+
+            if (Input.GetKeyDown(_selectWeapon2))
+            {
+                SelectWeapon(1);
             }
 
             if (Input.GetMouseButton(_mouseButton))
