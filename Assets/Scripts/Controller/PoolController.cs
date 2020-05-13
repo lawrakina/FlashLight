@@ -1,26 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using FpsUnity.Model;
 using UnityEngine;
 
 
 namespace FpsUnity.Helper
 {
-    public class PoolManager
+    public class PoolController
     {
         //todo сделать пуллменеджер синглтоном и при создании выделять для него все нужные в игре Dictionary<string, LinkedList<BaseObjectScene>>
         //todo сделать автокоррекцию размера пула (допустим вид патронов Bullet1 - максимум 50, если надо большо то создаются, но после возврата в пул урезать до 50)
-        private static Dictionary<string, LinkedList<BaseObjectScene>> _poolsDictionary;
-        private static Transform _deactivatedObjectsParent;
+        private Dictionary<string, LinkedList<BaseObjectScene>> _poolsDictionary;
+        private Transform _deactivatedObjectsParent;
 
-        public static void Init(Transform pooledObjectsContainer)
+        public void Init(Transform pooledObjectsContainer)
         {
-            Debug.Log($"PoolManager.Init; _poolsDictionary Create new Dictionary<string, LinkedList<BaseObjectScene>>()");
+            Debug.Log($"PoolController.Init; _poolsDictionary Create new Dictionary<string, LinkedList<BaseObjectScene>>()");
             _deactivatedObjectsParent = pooledObjectsContainer;
             _poolsDictionary = new Dictionary<string, LinkedList<BaseObjectScene>>();
         }
 
-        public static BaseObjectScene GetFromPool(BaseObjectScene prefab)
+        public BaseObjectScene GetFromPool(BaseObjectScene prefab)
         {
             //Debug.Log($"_poolsDictionary: {_poolsDictionary.Count}");
             if (!_poolsDictionary.ContainsKey(prefab.name))
@@ -50,13 +49,13 @@ namespace FpsUnity.Helper
             return result;
         }
 
-        public static void PutToPool(BaseObjectScene target)
+        public void PutToPool(BaseObjectScene target)
         {
             _poolsDictionary[target.name].AddFirst(target);
             target.transform.parent = _deactivatedObjectsParent;
             target.SetActive(false);
             //target.SetActivateChildren(target.gameObject, false);
-            Debug.Log($"PoolManager.PutToPool; pool.Count: {_poolsDictionary[target.name].Count}");
+            Debug.Log($"PoolController.PutToPool; pool.Count: {_poolsDictionary[target.name].Count}");
         }
     } 
 }

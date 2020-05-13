@@ -22,7 +22,7 @@ namespace FpsUnity.Controller
             _controllers.Initialization();
 
 
-            PoolManager.Init(Object.FindObjectOfType<GameController>().transform);
+            //PoolController.Init(Object.FindObjectOfType<GameController>().transform);
         }
 
         private void Update()

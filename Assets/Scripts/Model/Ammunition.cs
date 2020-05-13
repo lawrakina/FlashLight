@@ -2,6 +2,7 @@
 using FpsUnity.Enums;
 using FpsUnity.Helper;
 using FpsUnity.Interface;
+using FpsUnity.Services;
 using UnityEngine;
 
 
@@ -66,7 +67,7 @@ namespace FpsUnity.Model
         {
             _timeRemaining.RemoveTimeRemaining();
             _timePutToPool.RemoveTimeRemaining();
-            PoolManager.PutToPool(this);
+            ServiceLocator.Resolve<PoolController>().PutToPool(this);
         }
 
         #endregion
