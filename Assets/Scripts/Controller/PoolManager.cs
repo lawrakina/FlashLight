@@ -8,6 +8,8 @@ namespace FpsUnity.Helper
 {
     public class PoolManager
     {
+        //todo сделать пуллменеджер синглтоном и при создании выделять для него все нужные в игре Dictionary<string, LinkedList<BaseObjectScene>>
+        //todo сделать автокоррекцию размера пула (допустим вид патронов Bullet1 - максимум 50, если надо большо то создаются, но после возврата в пул урезать до 50)
         private static Dictionary<string, LinkedList<BaseObjectScene>> _poolsDictionary;
         private static Transform _deactivatedObjectsParent;
 

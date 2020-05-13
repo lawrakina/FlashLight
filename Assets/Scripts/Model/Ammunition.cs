@@ -13,7 +13,7 @@ namespace FpsUnity.Model
 
         [SerializeField] private float _timeToDestruct = 4;
         [SerializeField] private float _baseDamage = 10;
-        protected float _curDamage; //todo доделать свой урон
+        protected float _curDamage; 
         private float _lossOfDamageAtTime = 0.2f;
         private ITimeRemaining _timeRemaining;
         private ITimeRemaining _timePutToPool;
@@ -64,7 +64,6 @@ namespace FpsUnity.Model
 
         protected void DestroyAmmunition()
         {
-            //Destroy(gameObject);
             _timeRemaining.RemoveTimeRemaining();
             _timePutToPool.RemoveTimeRemaining();
             PoolManager.PutToPool(this);

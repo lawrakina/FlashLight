@@ -1,21 +1,13 @@
 ﻿using FpsUnity.Interface;
 using UnityEngine;
 
-
 namespace FpsUnity.Model
 {
-    public sealed class Bullet : Ammunition
+    public sealed class FireBol : Ammunition
     {
-        #region Fields
+        private InfoCollisionType collisionType = InfoCollisionType.FireBolt;
 
-        private InfoCollisionType collisionType = InfoCollisionType.Bullet;
-
-        #endregion
-
-
-        #region UnityMethods
-
-        private void OnCollisionEnter(Collision collision)//todo своя обработка полета и получения урона
+        private void OnCollisionEnter(Collision collision)
         {
             var setDamage = collision.gameObject.GetComponent<ICollision>();
 
@@ -25,8 +17,6 @@ namespace FpsUnity.Model
             }
 
             DestroyAmmunition();
-        } 
-
-        #endregion
+        }
     }
 }

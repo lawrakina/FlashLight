@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FpsUnity.Model
 {
-    public sealed class Aim : MonoBehaviour, ICollision, ISelectObject
+    public sealed class Enemy : MonoBehaviour, ISelectObject, ICollision
     {
         #region Properties
 
@@ -21,7 +21,7 @@ namespace FpsUnity.Model
 
         #endregion
 
-        //todo дописать поглощение урона
+        //todo дописать поглощение урона ПОДЖЕГ
 
         #region ICollision
 

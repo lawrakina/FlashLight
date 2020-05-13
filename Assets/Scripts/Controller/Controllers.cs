@@ -41,7 +41,7 @@ namespace FpsUnity.Controller
             ServiceLocator.Resolve<InputController>().On();
             ServiceLocator.Resolve<SelectionController>().On();
             ServiceLocator.Resolve<WeaponController>().On();
-
+            PoolManager.Init(Object.FindObjectOfType<GameController>().transform);
 
         }
 

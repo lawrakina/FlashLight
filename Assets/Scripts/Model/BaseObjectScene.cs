@@ -87,7 +87,7 @@ namespace FpsUnity.Model
 
             if (!target.activeInHierarchy) return;
 
-            foreach (GameObject child in target.transform)
+            foreach (GameObject child in target.transform) //todo исправить некорректную работу ИНОГДА вылетает ошибка, не находит потомков (пропускает Trail)
             {
                 SetActivateChildren(child, state);
             }
