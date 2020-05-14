@@ -36,39 +36,39 @@ namespace FpsUnity.Model
         {
             if (_isDead) return;
 
-            switch (info.InfoCollisionType)
-            {
-                case InfoCollisionType.Bullet:
+            //switch (info.InfoCollisionType)
+            //{
+            //    case InfoCollisionType.Bullet:
                     GettingMomentDamage(info);
-                    break;
-                case InfoCollisionType.FireBolt:
-                    GettingPeriodicDamage(info);
+            //        break;
+            //    case InfoCollisionType.FireBolt:
+            //        GettingPeriodicDamage(info);
 
-                    break;
-                case InfoCollisionType.FrostBolt:
+            //        break;
+            //    case InfoCollisionType.FrostBolt:
 
-                    break;
-                default:
-                    GettingMomentDamage(info);
-                    break;
-            }
+            //        break;
+            //    default:
+            //        GettingMomentDamage(info);
+            //        break;
+            //}
 
             
         }
 
-        private void GettingPeriodicDamage(in InfoCollision info)
-        {
-            _timeRemaining = new TimeRemaining(Burning, _timeBurning, true);
-        }
+        //private void GettingPeriodicDamage(in InfoCollision info)
+        //{
+        //    _timeRemaining = new TimeRemaining(Burning, _timeBurning, true);
+        //}
 
-        private void Burning()
-        {
-            var fireEffect = ServiceLocator.Resolve<EffectController>().GetFireEffect();
-            if (fireEffect)
-            {
-                fireEffect.transform.SetParent(transform);
-            }
-        }
+        //private void Burning()
+        //{
+        //    var fireEffect = ServiceLocator.Resolve<EffectController>().GetFireEffect();
+        //    if (fireEffect)
+        //    {
+        //        fireEffect.transform.SetParent(transform);
+        //    }
+        //}
 
         private void GettingMomentDamage(InfoCollision info)
         {

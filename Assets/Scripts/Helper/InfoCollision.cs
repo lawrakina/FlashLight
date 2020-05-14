@@ -9,7 +9,6 @@ namespace FpsUnity.Model
 
         private readonly Vector3 _direction;
         private readonly float _damage;
-        private readonly InfoCollisionType _infoCollisionType;
 
         #endregion
 
@@ -20,18 +19,15 @@ namespace FpsUnity.Model
 
         public float Damage => _damage;
 
-        public InfoCollisionType InfoCollisionType => _infoCollisionType;
-
         #endregion
 
 
         #region Methods
 
-        public InfoCollision(InfoCollisionType infoCollisionType ,float damage, Vector3 direction = default)
+        public InfoCollision(float damage, Vector3 direction = default)
         {
             _damage = damage;
             _direction = direction;
-            _infoCollisionType = infoCollisionType;
         }
 
         #endregion
