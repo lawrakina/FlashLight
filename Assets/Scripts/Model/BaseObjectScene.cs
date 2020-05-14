@@ -179,6 +179,10 @@ namespace FpsUnity.Model
             Transform.position = Vector3.zero;
             Transform.rotation = Quaternion.identity;
             Rigidbody.velocity = Vector3.zero;
+
+            var child = GetComponentInChildren<TrailRenderer>();
+            if(child)
+                child.Clear();
         }
     }
 }

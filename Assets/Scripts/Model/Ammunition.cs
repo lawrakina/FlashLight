@@ -38,7 +38,7 @@ namespace FpsUnity.Model
             _curDamage = _baseDamage;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             //Destroy(gameObject, _timeToDestruct);
             _timeRemaining = new TimeRemaining(LossOfDamage, 1.0f, true);

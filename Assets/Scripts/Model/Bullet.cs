@@ -15,6 +15,19 @@ namespace FpsUnity.Model
 
         #region UnityMethods
 
+        protected override void Start()
+        {
+            base.Start();
+            //var child = GetComponentInChildren<TrailRenderer>();
+            //child.Clear();
+        }
+
+        private void OnEnable()
+        {
+            //var child = GetComponentInChildren<TrailRenderer>();
+            //child.Clear();
+        }
+
         private void OnCollisionEnter(Collision collision)//todo своя обработка полета и получения урона
         {
             var setDamage = collision.gameObject.GetComponent<ICollision>();

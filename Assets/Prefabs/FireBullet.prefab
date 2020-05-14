@@ -71,7 +71,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.37
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeToDestruct: 10
   _baseDamage: 10
+  _collisionEffect: {fileID: 0}
   Type: 4
 --- !u!1 &7037845912920882557
 GameObject:
