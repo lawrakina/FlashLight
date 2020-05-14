@@ -2,6 +2,7 @@
 using FpsUnity.Helper;
 using FpsUnity.Services;
 
+
 namespace FpsUnity.Model
 {
     public sealed class Gun : Weapon

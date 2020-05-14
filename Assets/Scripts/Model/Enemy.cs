@@ -1,6 +1,9 @@
 ﻿using System;
+using FpsUnity.Controller;
 using FpsUnity.Interface;
+using FpsUnity.Services;
 using UnityEngine;
+
 
 namespace FpsUnity.Model
 {
@@ -18,6 +21,10 @@ namespace FpsUnity.Model
         public float Hp = 30;
         private bool _isDead;
         private float _timeToDestroy = 10.0f;
+        private float _timeBurning = 1.0f;
+        protected ITimeRemaining _timeRemaining;
+
+        private Color _cashColor;
 
         #endregion
 
@@ -28,6 +35,43 @@ namespace FpsUnity.Model
         public void CollisionEnter(InfoCollision info)
         {
             if (_isDead) return;
+
+            switch (info.InfoCollisionType)
+            {
+                case InfoCollisionType.Bullet:
+                    GettingMomentDamage(info);
+                    break;
+                case InfoCollisionType.FireBolt:
+                    GettingPeriodicDamage(info);
+
+                    break;
+                case InfoCollisionType.FrostBolt:
+
+                    break;
+                default:
+                    GettingMomentDamage(info);
+                    break;
+            }
+
+            
+        }
+
+        private void GettingPeriodicDamage(in InfoCollision info)
+        {
+            _timeRemaining = new TimeRemaining(Burning, _timeBurning, true);
+        }
+
+        private void Burning()
+        {
+            var fireEffect = ServiceLocator.Resolve<EffectController>().GetFireEffect();
+            if (fireEffect)
+            {
+                fireEffect.transform.SetParent(transform);
+            }
+        }
+
+        private void GettingMomentDamage(InfoCollision info)
+        {
             if (Hp > 0)
             {
                 Hp -= info.Damage;

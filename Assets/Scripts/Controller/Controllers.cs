@@ -40,6 +40,7 @@ namespace FpsUnity.Controller
             ServiceLocator.SetService(new SelectionController());
             ServiceLocator.SetService(new WeaponController());
             ServiceLocator.SetService(new PoolController());
+            ServiceLocator.SetService(new EffectController());
 
             _executeControllers = new IExecute[5];
 
@@ -75,6 +76,7 @@ namespace FpsUnity.Controller
             ServiceLocator.Resolve<SelectionController>().On();
             ServiceLocator.Resolve<WeaponController>().On();
             ServiceLocator.Resolve<PoolController>().Init(Object.FindObjectOfType<GameController>().transform);
+            ServiceLocator.Resolve<EffectController>().Init();
         }
 
         #endregion

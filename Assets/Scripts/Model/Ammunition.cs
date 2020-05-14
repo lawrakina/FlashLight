@@ -14,6 +14,7 @@ namespace FpsUnity.Model
 
         [SerializeField] private float _timeToDestruct = 4;
         [SerializeField] private float _baseDamage = 10;
+        [SerializeField] protected GameObject _collisionEffect;
         protected float _curDamage; 
         private float _lossOfDamageAtTime = 0.2f;
         private ITimeRemaining _timeRemaining;

@@ -1,6 +1,7 @@
 ﻿using FpsUnity.Interface;
 using UnityEngine;
 
+
 namespace FpsUnity.Model
 {
     public sealed class FireBol : Ammunition

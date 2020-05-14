@@ -20,9 +20,6 @@ namespace FpsUnity.Controller
         {
             _controllers = new Controllers();
             _controllers.Initialization();
-
-
-            //PoolController.Init(Object.FindObjectOfType<GameController>().transform);
         }
 
         private void Update()
