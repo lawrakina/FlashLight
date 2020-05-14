@@ -4769,7 +4769,7 @@ GameObject:
   - component: {fileID: 1062843450989314227}
   - component: {fileID: 3414456752897379253}
   m_Layer: 0
-  m_Name: FrostBullet
+  m_Name: FrostBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4878,6 +4878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6fc717abaa0d24187c173630b714ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToDestruct: 2
-  _baseDamage: 10
+  _timeToDestruct: 5
+  _baseDamage: 50
   Type: 4

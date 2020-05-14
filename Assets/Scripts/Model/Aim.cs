@@ -2,6 +2,7 @@
 using FpsUnity.Interface;
 using UnityEngine;
 
+
 namespace FpsUnity.Model
 {
     public sealed class Aim : MonoBehaviour, ICollision, ISelectObject

@@ -21,10 +21,6 @@ namespace FpsUnity.Model
         public float Hp = 30;
         private bool _isDead;
         private float _timeToDestroy = 10.0f;
-        private float _timeBurning = 1.0f;
-        protected ITimeRemaining _timeRemaining;
-
-        private Color _cashColor;
 
         #endregion
 
