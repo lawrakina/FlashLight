@@ -1,4 +1,5 @@
-﻿using FpsUnity.Enums;
+﻿using System;
+using FpsUnity.Enums;
 using FpsUnity.Interface;
 using FpsUnity.Services;
 using UnityEngine;
@@ -15,7 +16,10 @@ namespace FpsUnity.Controller
         private KeyCode _reloadClip = KeyCode.R;
         private KeyCode _selectWeapon1 = KeyCode.Alpha1;
         private KeyCode _selectWeapon2 = KeyCode.Alpha2;
-        private int _mouseButton = (int) MouseButton.LeftButton;
+        private KeyCode _selectWeapon3 = KeyCode.Alpha3;
+        private int _mouseButton = (int)MouseButton.LeftButton;
+
+        private float _cashMouseScrollWheel = 0.0f;
 
         #endregion
 
@@ -25,7 +29,7 @@ namespace FpsUnity.Controller
         public InputController()
         {
             Cursor.lockState = CursorLockMode.Locked;
-        }   
+        }
 
         private void SelectWeapon(int i)
         {
@@ -53,8 +57,6 @@ namespace FpsUnity.Controller
                 //Switch(ServiceLocator.Resolve<Inventory>().FlashLight);
             }
 
-            //todo реализовать выбор оружия по колесу мыши
-
             if (Input.GetKeyDown(_selectWeapon1))
             {
                 SelectWeapon(0);
@@ -64,6 +66,26 @@ namespace FpsUnity.Controller
             {
                 SelectWeapon(1);
             }
+
+            if (Input.GetKeyDown(_selectWeapon3))
+            {
+                SelectWeapon(2);
+            }
+
+
+            //if (Math.Abs(Input.GetAxis("Mouse ScrollWheel") - _cashMouseScrollWheel) > 0.1f)
+            //Dbg.Log($"Vector2 scroll = Input.mouseScrollDelta; {Input.mouseScrollDelta.y}");
+            if (Input.mouseScrollDelta.y > _cashMouseScrollWheel)
+            {
+                _cashMouseScrollWheel = Input.mouseScrollDelta.y;
+                SelectWeapon(ServiceLocator.Resolve<Inventory>().GetLastIndexWeapon() + 1);
+            }
+            if (Input.mouseScrollDelta.y < _cashMouseScrollWheel)
+            {
+                _cashMouseScrollWheel = Input.mouseScrollDelta.y;
+                SelectWeapon(ServiceLocator.Resolve<Inventory>().GetLastIndexWeapon() - 1);
+            }
+
 
             if (Input.GetMouseButton(_mouseButton))
             {

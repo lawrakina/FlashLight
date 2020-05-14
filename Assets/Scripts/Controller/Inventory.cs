@@ -8,11 +8,12 @@ using UnityEngine;
 
 namespace FpsUnity.Controller
 {
-    public sealed class Inventory  : IInitualization
+    public sealed class Inventory : IInitualization
     {
         #region Fields
 
         private Weapon[] _weapons = new Weapon[5];
+        private int _cashLastIndex = 0;
 
         #endregion
 
@@ -56,16 +57,27 @@ namespace FpsUnity.Controller
         public Weapon GetWeaponByIndex(int index)
         {
             //Debug.Log($"GetWeaponByIndex {index}, _weapons:{_weapons[index]}, {_weapons[index].name}");
+            if (index < 0)
+                index = 0;
+            if (index > _weapons.Length)
+                index = _weapons.Length + 1;
+            _cashLastIndex = index;
+            Dbg.Log($"_cashLastIndex = {_cashLastIndex}");
 
-            return index <= _weapons.Length ? _weapons[index] : null;
+            return _weapons[index];
+            //return index <= _weapons.Length ? _weapons[index] : null;
         }
 
         public Weapon GetWeaponByType(WeaponType type)
         {
             return _weapons.FirstOrDefault(weapon => weapon.WeaponType == type);
-        }          
+        }
 
         #endregion
 
+        public int GetLastIndexWeapon()
+        {
+            return _cashLastIndex;
+        }
     }
 }
