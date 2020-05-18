@@ -175,12 +175,9 @@ namespace FpsUnity.Model
 
         public void SetDefault()
         {
-            //todo сбросить все поля в дефолтное значение
             Transform.position = Vector3.zero;
             Transform.rotation = Quaternion.identity;
             Rigidbody.velocity = Vector3.zero;
-            DisableRigidBody();
-            //ConstraintsRigidBody(this.Rigidbody.constraints);
 
             var child = GetComponentInChildren<TrailRenderer>();
             if(child)
