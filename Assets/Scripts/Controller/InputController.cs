@@ -74,7 +74,8 @@ namespace FpsUnity.Controller
 
 
             //if (Math.Abs(Input.GetAxis("Mouse ScrollWheel") - _cashMouseScrollWheel) > 0.1f)
-            //Dbg.Log($"Vector2 scroll = Input.mouseScrollDelta; {Input.mouseScrollDelta.y}");
+            Dbg.Log($"Vector2 scroll = Input.mouseScrollDelta; {Input.mouseScrollDelta.y}");
+            //todo работает очень криво
             if (Input.mouseScrollDelta.y > _cashMouseScrollWheel)
             {
                 _cashMouseScrollWheel = Input.mouseScrollDelta.y;

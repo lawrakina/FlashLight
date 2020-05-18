@@ -43,8 +43,8 @@ namespace FpsUnity.Model
             _timeRemaining = new TimeRemaining(LossOfDamage, 1.0f, true);
             _timeRemaining.AddTimeRemaining();
 
-            _timePutToPool = new TimeRemaining(DestroyAmmunition, _timeToDestruct);
-            _timePutToPool.AddTimeRemaining();
+            
+            //_timePutToPool.AddTimeRemaining();
         }
 
         #endregion
@@ -55,7 +55,10 @@ namespace FpsUnity.Model
         public void AddForce(Vector3 direction)
         {
             if (!Rigidbody) return;
-            Rigidbody.AddForce(direction);
+            EnableRigidBody();
+            Rigidbody.AddForce(direction); 
+            _timePutToPool = new TimeRemaining(DestroyAmmunition, _timeToDestruct);
+            _timePutToPool.AddTimeRemaining();
         }
 
         private void LossOfDamage()
@@ -65,6 +68,7 @@ namespace FpsUnity.Model
 
         protected void DestroyAmmunition()
         {
+            DisableRigidBody();
             _timeRemaining.RemoveTimeRemaining();
             _timePutToPool.RemoveTimeRemaining();
             ServiceLocator.Resolve<PoolController>().PutToPool(this);
