@@ -130,7 +130,7 @@ namespace FpsUnity.Model
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
             foreach (var rigidbodyChild in rigidbodies)
             {
-                rigidbodyChild.isKinematic = true;
+                //rigidbodyChild.isKinematic = true;
             }
         }
 
@@ -145,7 +145,7 @@ namespace FpsUnity.Model
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
             foreach (var rigidbodyChild in rigidbodies)
             {
-                rigidbodyChild.isKinematic = false;
+                //rigidbodyChild.isKinematic = false;
             }
         }
 
