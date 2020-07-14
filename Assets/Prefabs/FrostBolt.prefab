@@ -4880,4 +4880,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeToDestruct: 5
   _baseDamage: 50
-  Type: 4
+  Type: 16

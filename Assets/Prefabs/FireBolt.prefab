@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 2744573042416218598}
   - component: {fileID: 5971925491074570988}
   - component: {fileID: 1062843450989314227}
-  - component: {fileID: 3414456752897379253}
+  - component: {fileID: 4503645037918634209}
   m_Layer: 0
   m_Name: FireBolt
   m_TagString: Untagged
@@ -312,7 +312,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &3414456752897379253
+--- !u!114 &4503645037918634209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,12 +321,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6248005342797818554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d6fc717abaa0d24187c173630b714ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fa85b2041794b59be603427d1fae991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToDestruct: 10
-  _baseDamage: 5
-  Type: 4
+  _timeToDestruct: 4
+  _baseDamage: 10
+  Type: 8
 --- !u!1 &7037845912920882557
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,10 @@ namespace FpsUnity.Controller
         private KeyCode _selectWeapon1 = KeyCode.Alpha1;
         private KeyCode _selectWeapon2 = KeyCode.Alpha2;
         private KeyCode _selectWeapon3 = KeyCode.Alpha3;
+        private KeyCode _selectWeapon4 = KeyCode.Alpha4;
+        private KeyCode _selectWeapon5 = KeyCode.Alpha5;
+        private KeyCode _selectWeapon6 = KeyCode.Alpha6;
+
         private int _mouseButton = (int)MouseButton.LeftButton;
 
         private float _cashMouseScrollWheel = 0.0f;
@@ -71,6 +75,19 @@ namespace FpsUnity.Controller
             if (Input.GetKeyDown(_selectWeapon3))
             {
                 SelectWeapon(2);
+            }
+
+            if (Input.GetKeyDown(_selectWeapon4))
+            {
+                SelectWeapon(3);
+            }
+            if (Input.GetKeyDown(_selectWeapon5))
+            {
+                SelectWeapon(4);
+            }
+            if (Input.GetKeyDown(_selectWeapon6))
+            {
+                SelectWeapon(5);
             }
 
 

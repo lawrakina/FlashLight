@@ -3,7 +3,9 @@
     public enum AmmunitionType
     {
         None = 0,
-        Rpg = 2,
-        Bullet = 4
+        Bullet = 2,
+        Bomb = 4,
+        FireBol = 8,
+        FrostBolt = 16
     }
 }

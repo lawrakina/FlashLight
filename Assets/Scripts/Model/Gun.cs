@@ -18,7 +18,7 @@ namespace FpsUnity.Model
         {
             if (!_isReady) return;
             if (Clip.CountAmmunition <= 0) return;
-            
+
             var tempAmmunition = ServiceLocator.Resolve<PoolController>().GetFromPool(Ammunition) as Ammunition;
             tempAmmunition.transform.position = _barrel.position;
             tempAmmunition.transform.rotation = _barrel.rotation;

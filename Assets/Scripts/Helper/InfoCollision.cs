@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FpsUnity.Enums;
+using UnityEngine;
 
 
 namespace FpsUnity.Model
@@ -9,6 +10,7 @@ namespace FpsUnity.Model
 
         private readonly Vector3 _direction;
         private readonly float _damage;
+        private readonly EffectType _effect;
 
         #endregion
 
@@ -19,15 +21,18 @@ namespace FpsUnity.Model
 
         public float Damage => _damage;
 
+        public EffectType Effect => _effect;
+
         #endregion
 
 
         #region Methods
 
-        public InfoCollision(float damage, Vector3 direction = default)
+        public InfoCollision(float damage, Vector3 direction = default, EffectType effect = EffectType.Def)
         {
             _damage = damage;
             _direction = direction;
+            _effect = effect;
         }
 
         #endregion

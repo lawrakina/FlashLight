@@ -73,6 +73,11 @@ namespace FpsUnity.Controller
             //_flashLightUiText.SetActive(false);
         }
 
+        public void ChangeBattery(float delta)
+        {
+            _flashLightModel.ChargeBattery(delta);
+        }
+        
         #endregion
 
     }
