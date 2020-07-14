@@ -8,8 +8,6 @@ namespace FpsUnity.Model
     {
         #region Fields
 
-        private InfoCollisionType collisionType = InfoCollisionType.Bullet;
-
         #endregion
 
 
@@ -21,11 +19,11 @@ namespace FpsUnity.Model
 
             if (setDamage != null)
             {
-                setDamage.CollisionEnter(new InfoCollision(collisionType, _curDamage, Rigidbody.velocity));
+                setDamage.CollisionEnter(new InfoCollision(_curDamage, Rigidbody.velocity));
             }
 
             DestroyAmmunition();
-        } 
+        }
 
         #endregion
     }

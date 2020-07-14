@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public static class Dbg
+namespace Helper
 {
-    public static bool IsDebug = true;
-    public static void Log(object value)
+    public static class Dbg
     {
-        if (IsDebug)
+        public static bool IsDebug = true;
+        public static void Log(object value)
         {
-            Debug.Log(value);
+            if (IsDebug)
+            {
+                Debug.Log(value);
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace FpsUnity.Model
         #region Fields
 
         [SerializeField] private float _speedRotation = 11f;
-        [SerializeField] private float _batteryChargeMax = 10f;
+        [SerializeField] private float _batteryChargeMax = 20f;
         [SerializeField] private float _percentLowBatteryCharge = 20f;
         [SerializeField] private float _percentFullBatteryCharge = 80f;
 

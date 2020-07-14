@@ -1,5 +1,6 @@
 ﻿using System;
 using FpsUnity.Controller;
+using FpsUnity.Enums;
 using FpsUnity.Interface;
 using FpsUnity.Services;
 using UnityEngine;
@@ -21,10 +22,6 @@ namespace FpsUnity.Model
         public float Hp = 30;
         private bool _isDead;
         private float _timeToDestroy = 10.0f;
-        private float _timeBurning = 1.0f;
-        protected ITimeRemaining _timeRemaining;
-
-        private Color _cashColor;
 
         #endregion
 
@@ -36,45 +33,54 @@ namespace FpsUnity.Model
         {
             if (_isDead) return;
 
-            switch (info.InfoCollisionType)
-            {
-                case InfoCollisionType.Bullet:
+            //switch (info.InfoCollisionType)
+            //{
+            //    case InfoCollisionType.Bullet:
                     GettingMomentDamage(info);
-                    break;
-                case InfoCollisionType.FireBolt:
-                    GettingPeriodicDamage(info);
+            //        break;
+            //    case InfoCollisionType.FireBolt:
+            //        GettingPeriodicDamage(info);
 
-                    break;
-                case InfoCollisionType.FrostBolt:
+            //        break;
+            //    case InfoCollisionType.FrostBolt:
 
-                    break;
-                default:
-                    GettingMomentDamage(info);
-                    break;
-            }
+            //        break;
+            //    default:
+            //        GettingMomentDamage(info);
+            //        break;
+            //}
 
             
         }
 
-        private void GettingPeriodicDamage(in InfoCollision info)
-        {
-            _timeRemaining = new TimeRemaining(Burning, _timeBurning, true);
-        }
+        //private void GettingPeriodicDamage(in InfoCollision info)
+        //{
+        //    _timeRemaining = new TimeRemaining(Burning, _timeBurning, true);
+        //}
 
-        private void Burning()
-        {
-            var fireEffect = ServiceLocator.Resolve<EffectController>().GetFireEffect();
-            if (fireEffect)
-            {
-                fireEffect.transform.SetParent(transform);
-            }
-        }
+        //private void Burning()
+        //{
+        //    var fireEffect = ServiceLocator.Resolve<EffectController>().GetFireEffect();
+        //    if (fireEffect)
+        //    {
+        //        fireEffect.transform.SetParent(transform);
+        //    }
+        //}
 
         private void GettingMomentDamage(InfoCollision info)
         {
             if (Hp > 0)
             {
                 Hp -= info.Damage;
+                switch (info.Effect)
+                {
+                    case EffectType.Fire:
+                        gameObject.transform.GetComponent<Renderer>().material.color = Color.red;
+                        break;
+                    case EffectType.Frost:
+                        gameObject.transform.GetComponent<Renderer>().material.color = Color.blue;
+                        break;
+                }
             }
 
             if (Hp <= 0)

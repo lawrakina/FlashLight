@@ -2,6 +2,7 @@
 using FpsUnity.Model;
 using UnityEngine;
 
+
 namespace FpsUnity.Controller
 {
     public sealed class WeaponController : BaseController

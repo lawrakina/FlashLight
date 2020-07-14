@@ -130,7 +130,7 @@ namespace FpsUnity.Model
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
             foreach (var rigidbodyChild in rigidbodies)
             {
-                rigidbodyChild.isKinematic = true;
+                //rigidbodyChild.isKinematic = true;
             }
         }
 
@@ -145,7 +145,7 @@ namespace FpsUnity.Model
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
             foreach (var rigidbodyChild in rigidbodies)
             {
-                rigidbodyChild.isKinematic = false;
+                //rigidbodyChild.isKinematic = false;
             }
         }
 
@@ -175,10 +175,13 @@ namespace FpsUnity.Model
 
         public void SetDefault()
         {
-            //todo сбросить все поля в дефолтное значение
             Transform.position = Vector3.zero;
             Transform.rotation = Quaternion.identity;
             Rigidbody.velocity = Vector3.zero;
+
+            var child = GetComponentInChildren<TrailRenderer>();
+            if(child)
+                child.Clear();
         }
     }
 }

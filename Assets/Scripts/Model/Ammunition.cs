@@ -14,7 +14,6 @@ namespace FpsUnity.Model
 
         [SerializeField] private float _timeToDestruct = 4;
         [SerializeField] private float _baseDamage = 10;
-        [SerializeField] protected GameObject _collisionEffect;
         protected float _curDamage; 
         private float _lossOfDamageAtTime = 0.2f;
         private ITimeRemaining _timeRemaining;
@@ -25,7 +24,7 @@ namespace FpsUnity.Model
 
         #region Properties
 
-        public AmmunitionType Type = AmmunitionType.Bullet;
+        public AmmunitionType Type;
 
         #endregion
 
@@ -38,14 +37,14 @@ namespace FpsUnity.Model
             _curDamage = _baseDamage;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             //Destroy(gameObject, _timeToDestruct);
             _timeRemaining = new TimeRemaining(LossOfDamage, 1.0f, true);
             _timeRemaining.AddTimeRemaining();
 
-            _timePutToPool = new TimeRemaining(DestroyAmmunition, _timeToDestruct);
-            _timePutToPool.AddTimeRemaining();
+            
+            //_timePutToPool.AddTimeRemaining();
         }
 
         #endregion
@@ -56,7 +55,10 @@ namespace FpsUnity.Model
         public void AddForce(Vector3 direction)
         {
             if (!Rigidbody) return;
-            Rigidbody.AddForce(direction);
+            EnableRigidBody();
+            Rigidbody.AddForce(direction); 
+            _timePutToPool = new TimeRemaining(DestroyAmmunition, _timeToDestruct);
+            _timePutToPool.AddTimeRemaining();
         }
 
         private void LossOfDamage()
@@ -66,6 +68,7 @@ namespace FpsUnity.Model
 
         protected void DestroyAmmunition()
         {
+            DisableRigidBody();
             _timeRemaining.RemoveTimeRemaining();
             _timePutToPool.RemoveTimeRemaining();
             ServiceLocator.Resolve<PoolController>().PutToPool(this);
