@@ -24,8 +24,6 @@ namespace FpsUnity.Controller
 
         private int _mouseButton = (int)MouseButton.LeftButton;
 
-        private float _cashMouseScrollWheel = 0.0f;
-
         #endregion
 
 
@@ -91,17 +89,12 @@ namespace FpsUnity.Controller
             }
 
 
-            //if (Math.Abs(Input.GetAxis("Mouse ScrollWheel") - _cashMouseScrollWheel) > 0.1f)
-            Dbg.Log($"Vector2 scroll = Input.mouseScrollDelta; {Input.mouseScrollDelta.y}");
-            //todo работает очень криво
-            if (Input.mouseScrollDelta.y > _cashMouseScrollWheel)
+            if (Input.mouseScrollDelta.y > 0)
             {
-                _cashMouseScrollWheel = Input.mouseScrollDelta.y;
                 SelectWeapon(ServiceLocator.Resolve<Inventory>().GetLastIndexWeapon() + 1);
             }
-            if (Input.mouseScrollDelta.y < _cashMouseScrollWheel)
+            if (Input.mouseScrollDelta.y < 0)
             {
-                _cashMouseScrollWheel = Input.mouseScrollDelta.y;
                 SelectWeapon(ServiceLocator.Resolve<Inventory>().GetLastIndexWeapon() - 1);
             }
 

@@ -57,16 +57,12 @@ namespace FpsUnity.Controller
 
         public Weapon GetWeaponByIndex(int index)
         {
-            //Debug.Log($"GetWeaponByIndex {index}, _weapons:{_weapons[index]}, {_weapons[index].name}");
             if (index < 0)
                 index = 0;
-            if (index > _weapons.Length)
-                index = _weapons.Length + 1;
+            if (index >= _weapons.Length)
+                index = _weapons.Length - 1;
             _cashLastIndex = index;
-            Dbg.Log($"_cashLastIndex = {_cashLastIndex}");
-
             return _weapons[index];
-            //return index <= _weapons.Length ? _weapons[index] : null;
         }
 
         public Weapon GetWeaponByType(WeaponType type)

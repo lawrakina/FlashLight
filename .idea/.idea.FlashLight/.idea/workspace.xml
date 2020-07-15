@@ -20,32 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c295f3dd-9658-435d-8019-abb9e221485c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/EffectType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/EffectType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/GameObjectName.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/GameObjectName.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Model/Bomb.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Model/Bomb.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Model/MiniLaser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Model/MiniLaser.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Aim.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/Aim.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FireBolt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FireBolt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FrostBolt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FrostBolt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SampleScenes/Materials/YellowSmooth.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SampleScenes/Materials/YellowSmooth.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/FlashLightController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/FlashLightController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlashLight/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlashLight/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/SelectionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/SelectionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/WeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/WeaponController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/AmmunitionType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/AmmunitionType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/WeaponType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/WeaponType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Helper/InfoCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Helper/InfoCollision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Model/Aim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Model/Aim.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Model/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Model/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Model/FlashLightModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Model/FlashLightModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Model/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Model/Gun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Маращук_Алексей_дз_1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Маращук_Алексей_дз_1.zip.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/Inventory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +93,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/FlashLightModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Weapon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Gun.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Bullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/MiniLaser.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controller/SelectionController.cs" />
@@ -127,6 +103,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/AmmunitionType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Bomb.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Inventory.cs" />
       </list>
     </option>
   </component>
@@ -180,7 +158,7 @@
       <workItem from="1590979465314" duration="4970000" />
       <workItem from="1594130115670" duration="620000" />
       <workItem from="1594270838239" duration="3385000" />
-      <workItem from="1594639183265" duration="7368000" />
+      <workItem from="1594639183265" duration="9117000" />
     </task>
     <servers />
   </component>
