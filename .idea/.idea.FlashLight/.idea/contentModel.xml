@@ -57,6 +57,7 @@
           <e p="Controller" t="Include">
             <e p="BaseController.cs" t="Include" />
             <e p="Controllers.cs" t="Include" />
+            <e p="EnemyController.cs" t="Include" />
             <e p="FlashLightController.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
@@ -76,13 +77,16 @@
             <e p="AmmunitionType.cs" t="Include" />
             <e p="EffectType.cs" t="Include" />
             <e p="FlashLightActiveType.cs" t="Include" />
-            <e p="GameObjectName.cs" t="Include" />
             <e p="MouseButton.cs" t="Include" />
+            <e p="StateBot.cs" t="Include" />
+            <e p="TagManager.cs" t="Include" />
             <e p="WeaponType.cs" t="Include" />
           </e>
           <e p="Helper" t="Include">
             <e p="Dbg.cs" t="Include" />
             <e p="InfoCollision.cs" t="Include" />
+            <e p="Reference.cs" t="Include" />
+            <e p="Vision.cs" t="Include" />
           </e>
           <e p="Interface" t="Include">
             <e p="ICollision.cs" t="Include" />
@@ -93,6 +97,12 @@
             <e p="ITimeRemaining.cs" t="Include" />
           </e>
           <e p="Model" t="Include">
+            <e p="AI" t="Include">
+              <e p="AnimalBot.cs" t="Include" />
+              <e p="BodyBot.cs" t="Include" />
+              <e p="Bot.cs" t="Include" />
+              <e p="HeadBot.cs" t="Include" />
+            </e>
             <e p="Aim.cs" t="Include" />
             <e p="Ammunition.cs" t="Include" />
             <e p="BaseObjectScene.cs" t="Include" />

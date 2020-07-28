@@ -40,19 +40,16 @@ namespace FpsUnity.Controller
             ServiceLocator.SetService(new SelectionController());
             ServiceLocator.SetService(new WeaponController());
             ServiceLocator.SetService(new PoolController());
+            ServiceLocator.SetService(new EnemyController());
             //ServiceLocator.SetService(new EffectController());
 
-            _executeControllers = new IExecute[5];
-
+            _executeControllers = new IExecute[6];
             _executeControllers[0] = ServiceLocator.Resolve<TimeRemainingController>();
-
             _executeControllers[1] = ServiceLocator.Resolve<PlayerController>();
-
             _executeControllers[2] = ServiceLocator.Resolve<FlashLightController>();
-
             _executeControllers[3] = ServiceLocator.Resolve<InputController>();
-
             _executeControllers[4] = ServiceLocator.Resolve<SelectionController>();
+            _executeControllers[5] = ServiceLocator.Resolve<EnemyController>();
         }
 
         #endregion
@@ -72,6 +69,7 @@ namespace FpsUnity.Controller
 
             ServiceLocator.Resolve<Inventory>().Initialization();
             ServiceLocator.Resolve<PlayerController>().On();
+            ServiceLocator.Resolve<EnemyController>().On();
             ServiceLocator.Resolve<InputController>().On();
             ServiceLocator.Resolve<SelectionController>().On();
             ServiceLocator.Resolve<WeaponController>().On();

@@ -15,7 +15,7 @@ namespace FpsUnity.Helper
 
         public void Init(Transform pooledObjectsContainer)
         {
-            Dbg.Log($"PoolController.Init; _poolsDictionary Create new Dictionary<string, LinkedList<BaseObjectScene>>()");
+            // Dbg.Log($"PoolController.Init; _poolsDictionary Create new Dictionary<string, LinkedList<BaseObjectScene>>()");
             _deactivatedObjectsParent = pooledObjectsContainer;
             _poolsDictionary = new Dictionary<string, LinkedList<BaseObjectScene>>();
         }
@@ -25,7 +25,7 @@ namespace FpsUnity.Helper
             //Debug.Log($"_poolsDictionary: {_poolsDictionary.Count}");
             if (!_poolsDictionary.ContainsKey(prefab.name))
             {
-                Dbg.Log($"Create new LinkedList<BaseObjectScene>");
+                // Dbg.Log($"Create new LinkedList<BaseObjectScene>");
                 _poolsDictionary[prefab.name] = new LinkedList<BaseObjectScene>();
             }
 
@@ -33,17 +33,17 @@ namespace FpsUnity.Helper
 
             if (_poolsDictionary[prefab.name].Count > 0)
             {
-                Dbg.Log($"_poolsDictionary[{prefab.name}].Count = {_poolsDictionary.Count}");
+                // Dbg.Log($"_poolsDictionary[{prefab.name}].Count = {_poolsDictionary.Count}");
                 result = _poolsDictionary[prefab.name].First.Value;
                 _poolsDictionary[prefab.name].RemoveFirst();
-                result.SetDefault();
+                // result.SetDefault();
                 result.SetActive(true);
                 //result.SetActivateChildren(result.gameObject, true);
-                Dbg.Log($"return {result.name}");
+                // Dbg.Log($"return {result.name}");
                 return result;
             }
 
-            Dbg.Log($"Create new BaseObjectScene.Instantiate(prefab): {prefab.name}");
+            // Dbg.Log($"Create new BaseObjectScene.Instantiate(prefab): {prefab.name}");
             result = BaseObjectScene.Instantiate(prefab);
             result.name = prefab.name;
 
@@ -55,7 +55,7 @@ namespace FpsUnity.Helper
             _poolsDictionary[target.name].AddFirst(target);
             target.transform.parent = _deactivatedObjectsParent;
             target.SetActive(false);
-            Dbg.Log($"PoolController.PutToPool; pool.Count: {_poolsDictionary[target.name].Count}");
+            // Dbg.Log($"PoolController.PutToPool; pool.Count: {_poolsDictionary[target.name].Count}");
         }
     } 
 }

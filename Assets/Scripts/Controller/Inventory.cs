@@ -44,16 +44,16 @@ namespace FpsUnity.Controller
             FlashLight.Switch(FlashLightActiveType.Off);
         }
 
-        public void RemoveWeapon(Weapon weapon)
-        {
-            for (int i = 0; i < _weapons.Length; i++)
-            {
-                if (_weapons[i].Compare(weapon))
-                    _weapons[i] = null;
-            }
-
-            _weapons = _weapons.Where(x => x != null).ToArray();
-        }
+        // public void RemoveWeapon(Weapon weapon)
+        // {
+        //     for (int i = 0; i < _weapons.Length; i++)
+        //     {
+        //         if (_weapons[i].Compare(weapon))
+        //             _weapons[i] = null;
+        //     }
+        //
+        //     _weapons = _weapons.Where(x => x != null).ToArray();
+        // }
 
         public Weapon GetWeaponByIndex(int index)
         {
@@ -65,10 +65,10 @@ namespace FpsUnity.Controller
             return _weapons[index];
         }
 
-        public Weapon GetWeaponByType(WeaponType type)
-        {
-            return _weapons.FirstOrDefault(weapon => weapon.WeaponType == type);
-        }
+        // public Weapon GetWeaponByType(WeaponType type)
+        // {
+        //     return _weapons.FirstOrDefault(weapon => weapon.WeaponType == type);
+        // }
 
         #endregion
 

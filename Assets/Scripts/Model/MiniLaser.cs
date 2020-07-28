@@ -7,7 +7,8 @@ namespace FpsUnity.Model
     public sealed class MiniLaser : Weapon
     {
         private Camera _mainCamera;
-        private Vector2 _center;
+        private readonly Vector2 _center;
+        [SerializeField] private readonly float _distanceAttack = 10.0f;
         
         private Camera MainCamera{
             get { 
@@ -20,8 +21,8 @@ namespace FpsUnity.Model
         
         private MiniLaser()
         {
-            WeaponType = Enums.WeaponType.MiniLaser;
-            _mainCamera = Camera.main;
+            // WeaponType = Enums.WeaponType.MiniLaser;
+            _recommendedDistance = _distanceAttack;
             _center = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
         }
 

@@ -1,15 +1,18 @@
 ﻿using FpsUnity.Controller;
 using FpsUnity.Helper;
 using FpsUnity.Services;
+using UnityEngine;
 
 
 namespace FpsUnity.Model
 {
     public sealed class FrostHand : Weapon
     {
+        [SerializeField] private readonly float _distanceAttack = 5.0f;
         public FrostHand()
         {
-            WeaponType = Enums.WeaponType.FrostHand;
+            // WeaponType = Enums.WeaponType.FrostHand;
+            _recommendedDistance = _distanceAttack;
         }
 
 

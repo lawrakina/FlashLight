@@ -5,17 +5,36 @@ namespace FpsUnity.Model
 {
     public abstract class BaseObjectScene : MonoBehaviour
     {
-        #region Properties
+        private int _layer;
+        private Color _color;
+        private bool _isVisible;
+        [HideInInspector] public Rigidbody Rigidbody;
+        [HideInInspector] public Transform Transform;
 
-        [HideInInspector] public Rigidbody Rigidbody { get; private set; }
-        [HideInInspector] public Transform Transform { get; private set; }
+        #region UnityFunction
 
+        protected virtual void Awake()
+        {
+            Rigidbody = GetComponent<Rigidbody>();
+            Transform = GetComponent<Transform>();
+        }
+
+        #endregion
+
+        #region Property
+
+        /// <summary>
+        /// Имя объекта
+        /// </summary>
         public string Name
         {
             get => gameObject.name;
             set => gameObject.name = value;
         }
 
+        /// <summary>
+        /// Слой объекта
+        /// </summary>
         public int Layer
         {
             get => _layer;
@@ -27,6 +46,9 @@ namespace FpsUnity.Model
             }
         }
 
+        /// <summary>
+        /// Цвет материала объекта
+        /// </summary>
         public Color Color
         {
             get => _color;
@@ -43,109 +65,90 @@ namespace FpsUnity.Model
             set
             {
                 _isVisible = value;
-                //Debug.Log($"IsVisible: {value}, transform: {transform}");
                 RendererSetActive(transform);
-                //Debug.Log($"IsVisible: {value}, transform.childCount: {transform.childCount}");
                 if (transform.childCount <= 0) return;
-                foreach (Transform transform1 in transform)
+                foreach (Transform t in transform)
                 {
-                    RendererSetActive(transform1);
+                    RendererSetActive(t);
                 }
             }
         }
 
         #endregion
 
+        #region PrivateFunction
 
-        #region Fields
-
-        private int _layer;
-        private Color _color;
-        private bool _isVisible;
-
-        #endregion
-
-
-        #region UnityMethods
-
-        protected virtual void Awake()
+        /// <summary>
+        /// Выставляет слой себе и всем вложенным объектам в независимости от уровня вложенности
+        /// </summary>
+        /// <param name="obj">Объект</param>
+        /// <param name="lvl">Слой</param>
+        private void AskLayer(Transform obj, int lvl)
         {
-            Rigidbody = GetComponent<Rigidbody>();
-            Transform =  GetComponent<Transform>();
-        }
-
-        #endregion
-
-
-        #region Methods
-
-        public void SetActivateChildren(GameObject target, bool state)
-        {
-            target.SetActive(state);
-
-            if (target.transform.childCount <= 0) return;
-
-            if (!target.activeInHierarchy) return;
-
-            foreach (GameObject child in target.transform) //todo исправить некорректную работу ИНОГДА вылетает ошибка, не находит потомков (пропускает Trail)
-            {
-                SetActivateChildren(child, state);
-            }
-        }
-
-        private void AskLayer(Transform obj, int layer)
-        {
-            obj.gameObject.layer = layer;
+            obj.gameObject.layer = lvl;
             if (obj.childCount <= 0) return;
-
-            foreach (Transform child in obj)
+            foreach (Transform d in obj)
             {
-                AskLayer(child, layer);
+                AskLayer(d, lvl);
             }
         }
 
         private void RendererSetActive(Transform renderer)
         {
-            if (renderer.gameObject.TryGetComponent<Renderer>(out var component))
-            {
+            var component = renderer.gameObject.GetComponent<Renderer>();
+            if (component)
                 component.enabled = _isVisible;
-            }
         }
 
         private void AskColor(Transform obj, Color color)
         {
-            foreach (var currentMaterial in obj.GetComponent<Renderer>().materials)
+            if (obj.TryGetComponent<Renderer>(out var renderer))
             {
-                currentMaterial.color = color;
+                foreach (var curMaterial in renderer.materials)
+                {
+                    curMaterial.color = color;
+                }
             }
+
             if (obj.childCount <= 0) return;
-            foreach (Transform child in obj)
+            foreach (Transform d in obj)
             {
-                AskColor(child, color);
+                AskColor(d, color);
             }
         }
 
+        #endregion
+
+        /// <summary>
+        /// Выключает физику у объекта и его детей
+        /// </summary>
         public void DisableRigidBody()
         {
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
-            foreach (var rigidbodyChild in rigidbodies)
+            foreach (var rb in rigidbodies)
             {
-                //rigidbodyChild.isKinematic = true;
+                rb.isKinematic = true;
             }
         }
 
+        /// <summary>
+        /// Включает физику у объекта и его детей
+        /// </summary>
         public void EnableRigidBody(float force)
         {
             EnableRigidBody();
             Rigidbody.AddForce(transform.forward * force);
         }
 
+        /// <summary>
+        /// Включает физику у объекта и его детей
+        /// </summary>
         public void EnableRigidBody()
         {
             var rigidbodies = GetComponentsInChildren<Rigidbody>();
-            foreach (var rigidbodyChild in rigidbodies)
+            foreach (var rb in rigidbodies)
             {
-                //rigidbodyChild.isKinematic = false;
+                rb.isKinematic = false;
             }
         }
 
@@ -161,18 +164,7 @@ namespace FpsUnity.Model
                 rb.constraints = rigidbodyConstraints;
             }
         }
-
-        public void SetActive(bool value)
-        {
-            IsVisible = value;
-            if (TryGetComponent<Collider>(out var component))
-            {
-                component.enabled = value;
-            }
-        }
-
-        #endregion
-
+        
         public void SetDefault()
         {
             Transform.position = Vector3.zero;
@@ -182,6 +174,17 @@ namespace FpsUnity.Model
             var child = GetComponentInChildren<TrailRenderer>();
             if(child)
                 child.Clear();
+        }
+
+        public void SetActive(bool value)
+        {
+            IsVisible = value;
+
+            var tempCollider = GetComponent<Collider>();
+            if (tempCollider)
+            {
+                tempCollider.enabled = value;
+            }
         }
     }
 }

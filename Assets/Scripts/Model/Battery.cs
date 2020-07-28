@@ -29,7 +29,7 @@ namespace FpsUnity.Model
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.name !=  GameObjectName.PLAYER)
+            if(other.name !=  TagManager.PLAYER)
                 return;
             Debug.Log(other.name);
             ServiceLocator.Resolve<FlashLightController>().ChangeBattery(_lightPoints);

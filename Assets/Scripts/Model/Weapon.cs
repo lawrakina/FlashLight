@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace FpsUnity.Model
 {
-    public abstract class Weapon : BaseObjectScene, IComparer<Weapon>
+    public abstract class Weapon : BaseObjectScene
     {
         #region Fields
 
@@ -20,6 +20,7 @@ namespace FpsUnity.Model
         [SerializeField] protected Transform _barrel;
         [SerializeField] protected float _force = 999.0f;
         [SerializeField] protected float _rechergeTime = 0.2f;
+        [SerializeField] protected float _recommendedDistance;
 
         private Queue<Clip> _clips = new Queue<Clip>();
 
@@ -31,9 +32,7 @@ namespace FpsUnity.Model
 
         #region Properties
 
-        public WeaponType WeaponType { get; set; }
-
-        public AmmunitionType[] AmmunitionTypes = { AmmunitionType.Bullet };
+        // public WeaponType WeaponType { get; set; }
 
         public int CountClip => _clips.Count;
 
@@ -81,19 +80,19 @@ namespace FpsUnity.Model
 
         #region IComparer
 
-        public bool Compare(Weapon other)
-        {
-            return this.WeaponType == other.WeaponType;
-        }
-
-        public int Compare(Weapon x, Weapon y)
-        {
-            if (x.WeaponType > y.WeaponType)
-                return 1;
-            if (x.WeaponType < y.WeaponType)
-                return -1;
-            return 0;
-        }
+        // public bool Compare(Weapon other)
+        // {
+        //     return this.WeaponType == other.WeaponType;
+        // }
+        //
+        // public int Compare(Weapon x, Weapon y)
+        // {
+        //     if (x.WeaponType > y.WeaponType)
+        //         return 1;
+        //     if (x.WeaponType < y.WeaponType)
+        //         return -1;
+        //     return 0;
+        // }
 
         #endregion
     }
